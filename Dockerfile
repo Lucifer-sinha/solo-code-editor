@@ -11,10 +11,10 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /usr/src/app
 
-COPY server/package*.json ./
+COPY code-ta/server/package*.json ./
 RUN npm ci --omit=dev
 
-COPY server/ .
+COPY code-ta/server/ .
 
 RUN mkdir -p user_files sandbox problems
 
