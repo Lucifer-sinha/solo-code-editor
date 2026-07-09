@@ -35,3 +35,11 @@ nginx/ssl/*.pem
 
 # Temporary files
 test_file.txt
+
+# Sandbox / temp code execution
+code-ta/server/sandbox/
+code-ta/server/user_files/
+code-ta/server/user_files*/
+
+# SSL keys
+*.pem

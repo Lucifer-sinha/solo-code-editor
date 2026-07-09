@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: solo-code-editor
+    runtime: image
+    image:
+      url: docker.io/library/node:18-slim
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://solo-code-editor.onrender.com
+      - key: VITE_API_URL
+        value: https://solo-code-editor.onrender.com
+    buildCommand: |
+      apt-get update && apt-get install -y python3 make g++ build-essential libsqlite3-dev &&
+      npm config set python /usr/bin/python3 &&
+      cd server && npm ci --omit=dev
+    startCommand: cd server && node index.js
+    autoDeploy: true
