@@ -19,6 +19,8 @@ const auth = require('./middleware/auth');
 const collabTerminalWSS = require('./collab-terminal');
 const terminalWSS = new WebSocket.Server({ noServer: true });
 const codeExecutionWSS = new WebSocket.Server({ noServer: true });
+const { setupWSConnection } = require('y-websocket/bin/utils.js');
+const yjsWSS = new WebSocket.Server({ noServer: true });
 // Add after your existing imports
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const httpProxy = require('http-proxy-middleware');
@@ -2611,10 +2613,19 @@ httpServer.on('upgrade', (request, socket, head) => {
       console.log('[WS] Code execution client connected.');
       codeExecutionWSS.emit('connection', ws, request); // Pass req to get sessionId
     });
+  } else if (request.url.startsWith('/yjs')) {
+    yjsWSS.handleUpgrade(request, socket, head, (ws) => {
+      console.log('[WS] Yjs client connected.');
+      yjsWSS.emit('connection', ws, request);
+    });
   } else {
     console.warn(`[WS] Unknown upgrade request URL: ${request.url}. Destroying socket.`);
     socket.destroy();
   }
+});
+
+yjsWSS.on('connection', (ws, req) => {
+  setupWSConnection(ws, req);
 });
 
 // Serve static files from the public directory (for Monaco workers and other public assets)

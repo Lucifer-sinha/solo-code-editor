@@ -33,8 +33,11 @@ const CodeEditor = forwardRef(function CodeEditor(props: CodeEditorProps, ref) {
       ydocRef.current = ydoc;
       // Use collabId+filePath as unique doc name
       const docName = `${props.collabId}:${props.filePath}`;
+      // Determine Yjs WebSocket URL: use env var in dev, same host in prod
+      const yjsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const yjsHost = import.meta.env.VITE_YJS_URL || `${yjsProtocol}//${window.location.host}/yjs`;
       const provider = new WebsocketProvider(
-        process.env.YJS_URL || 'ws://localhost:1234',
+        yjsHost,
         docName,
         ydoc
       );
