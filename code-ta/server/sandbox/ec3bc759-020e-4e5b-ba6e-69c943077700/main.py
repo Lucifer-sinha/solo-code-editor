@@ -1,2 +1,0 @@
-print("cell")
-print("new")
