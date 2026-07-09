@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { lazy, Suspense } from 'react';
 import Playground from './pages/Playground';
-import Demo3D from './pages/Demo3D';
+const Demo3D = lazy(() => import('./pages/Demo3D'));
 
 import { Code, LogOut } from 'lucide-react';
 import { CollabProvider } from './context/CollabContext';
@@ -67,7 +68,7 @@ function App() {
             <Routes>
               <Route path="/login" element={<LoginRegisterPage />} />
               {/* Public 3D Demo Route */}
-              <Route path="/demo" element={<Demo3D />} />
+              <Route path="/demo" element={<Suspense fallback={<div style={{color:'#fff',textAlign:'center',marginTop:80}}>Loading 3D...</div>}><Demo3D /></Suspense>} />
               {/* Protected routes */}
               <Route element={<RequireAuth />}>
                 <Route element={<AuthenticatedLayout />}>
