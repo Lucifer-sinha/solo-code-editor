@@ -1,0 +1,146 @@
+.file-explorer {
+  width: 100%;
+  height: 100%;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+}
+
+.file-explorer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.file-explorer-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.file-tree {
+  padding: 10px;
+}
+
+.tree-node {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tree-node:hover {
+  background-color: #2d2d2d;
+}
+
+.node-icon {
+  color: #9cdcfe;
+  font-size: 1.1em;
+}
+
+.node-title {
+  flex: 1;
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.node-button {
+  background: none;
+  border: none;
+  color: #9cdcfe;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  font-size: 1.1em;
+}
+
+.node-button:hover {
+  background-color: #2d2d2d;
+}
+
+.node-button:active {
+  background-color: #333;
+}
+
+.context-menu {
+  position: fixed;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 4px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.context-menu-item {
+  padding: 4px 8px;
+  color: #d4d4d4;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.context-menu-item:hover {
+  background: #2d2d2d;
+  color: #9cdcfe;
+}
+
+.context-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.new-file-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.file-explorer-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #888;
+}
+
+.item-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-explorer-item-name input {
+  background-color: #3c3c3c;
+  color: white;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.file-explorer-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #888;
+}

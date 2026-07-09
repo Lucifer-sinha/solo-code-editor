@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Test</title>
+</head>
+<body>
+    <h1>Backend API Test</h1>
+    <button onclick="testHealth()">Test Health</button>
+    <button onclick="testList()">Test List Files</button>
+    <button onclick="testCreateFile()">Test Create File</button>
+    <button onclick="testCreateDir()">Test Create Directory</button>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+        
+        function log(message) {
+            output.innerHTML += '<p>' + message + '</p>';
+            console.log(message);
+        }
+
+        async function testHealth() {
+            try {
+                const res = await fetch('http://localhost:5000/api/health');
+                const data = await res.json();
+                log('Health check: ' + JSON.stringify(data));
+            } catch (e) {
+                log('Health check failed: ' + e.message);
+            }
+        }
+
+        async function testList() {
+            try {
+                const res = await fetch('http://localhost:5000/api/fs/list');
+                const data = await res.json();
+                log('List files: ' + JSON.stringify(data, null, 2));
+            } catch (e) {
+                log('List files failed: ' + e.message);
+            }
+        }
+
+        async function testCreateFile() {
+            try {
+                const res = await fetch('http://localhost:5000/api/fs/file', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ path: 'test.py', content: 'print("Hello World")' })
+                });
+                const data = await res.json();
+                log('Create file: ' + JSON.stringify(data));
+            } catch (e) {
+                log('Create file failed: ' + e.message);
+            }
+        }
+
+        async function testCreateDir() {
+            try {
+                const res = await fetch('http://localhost:5000/api/fs/dir', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ path: 'test_folder' })
+                });
+                const data = await res.json();
+                log('Create directory: ' + JSON.stringify(data));
+            } catch (e) {
+                log('Create directory failed: ' + e.message);
+            }
+        }
+    </script>
+</body>
+</html> 

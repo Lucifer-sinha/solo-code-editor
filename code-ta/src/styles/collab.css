@@ -1,0 +1,165 @@
+/* Collaboration UI Styles - Clean and Simple */
+
+/* Remove any existing animations and transitions for collaboration components */
+.collab-room * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Clean button styles */
+.collab-btn {
+  background: #0e639c;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.collab-btn:hover {
+  background: #1177bb;
+}
+
+.collab-btn:disabled {
+  background: #3c3c3c;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.collab-btn-secondary {
+  background: #3c3c3c;
+  border: 1px solid #464647;
+  color: #cccccc;
+}
+
+.collab-btn-secondary:hover {
+  background: #464647;
+}
+
+.collab-btn-danger {
+  background: #f14c4c;
+  color: #ffffff;
+}
+
+.collab-btn-danger:hover {
+  background: #ff6b6b;
+}
+
+/* Clean input styles */
+.collab-input {
+  background: #3c3c3c;
+  border: 1px solid #464647;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  width: 100%;
+}
+
+.collab-input:focus {
+  outline: none;
+  border-color: #0e639c;
+}
+
+/* Clean modal styles */
+.collab-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.collab-modal-content {
+  background: #252526;
+  border: 1px solid #3c3c3c;
+  border-radius: 6px;
+  padding: 20px;
+  min-width: 320px;
+  max-width: 400px;
+}
+
+/* Clean notification styles */
+.collab-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #252526;
+  border: 1px solid #3c3c3c;
+  border-radius: 6px;
+  padding: 16px;
+  min-width: 300px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Clean text styles */
+.collab-title {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+
+.collab-text {
+  color: #cccccc;
+  font-size: 12px;
+  margin: 0;
+}
+
+.collab-text-small {
+  color: #999999;
+  font-size: 11px;
+  margin: 0;
+}
+
+/* Clean layout helpers */
+.collab-flex {
+  display: flex;
+}
+
+.collab-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.collab-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collab-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.collab-gap-sm {
+  gap: 8px;
+}
+
+.collab-gap-md {
+  gap: 12px;
+}
+
+.collab-mb-sm {
+  margin-bottom: 8px;
+}
+
+.collab-mb-md {
+  margin-bottom: 12px;
+}
+
+.collab-mb-lg {
+  margin-bottom: 16px;
+}
