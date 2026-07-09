@@ -2,12 +2,12 @@ FROM node:18-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NODE_ENV=production
+ENV PYTHON=/usr/bin/python3
 
 RUN apt-get update && apt-get install -y \
     python3 make g++ build-essential libsqlite3-dev curl \
     && rm -rf /var/lib/apt/lists/* \
-    && ln -sf /usr/bin/python3 /usr/bin/python \
-    && npm config set python /usr/bin/python3
+    && ln -sf /usr/bin/python3 /usr/bin/python
 
 WORKDIR /usr/src/app
 
